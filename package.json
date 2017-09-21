@@ -1,0 +1,27 @@
+{
+  "name": "fantasy-auto-racing-picker",
+  "version": "1.0.0",
+  "description": "Automated server that pulls API auto racing data from Sport Radar and then submits my fantasy picks via email.",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "express": "^4.15.4",
+    "node-schedule": "^1.2.5",
+    "nodemailer": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruce-graham/fantasy-auto-racing-picker.git"
+  },
+  "author": "Bruce Graham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bruce-graham/fantasy-auto-racing-picker/issues"
+  },
+  "homepage": "https://github.com/bruce-graham/fantasy-auto-racing-picker#readme"
+}
