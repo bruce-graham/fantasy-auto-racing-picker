@@ -49,9 +49,7 @@ const getDataAndEmail = () => {
     });
 };
 
-getDataAndEmail();
-// schedule.scheduleJob('49 * * * * *', getDataAndEmail);
-// schedule.scheduleJob('* * 12 * * 5', getDataAndEmail);
+schedule.scheduleJob('* * 12 * * 5', getDataAndEmail);
 
 app.listen('3333', () => {
   console.log('Listening on port 3000');
