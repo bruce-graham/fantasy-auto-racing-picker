@@ -8,18 +8,16 @@ const app = express();
 const getDataSendEmail = () => {
   axios.get('http://api.sportradar.us/nascar-ot3/mc/2017/standings/drivers.json?api_key=' + config.sportradarKey)
     .then(response => {
-      const data = response.data;
-
-      const topDrivers = data.drivers.filter(driver => {
+      const topDrivers = response.data.drivers.filter(driver => {
         return driver.rank <= 15;
       })
-        .sort((a, b) => {
-          return a.avg_finish_position - b.avg_finish_position;
-        })
-        .map((driver, index) => {
-          return 'Pick #' + (index + 1) + ':      ' + driver.full_name;
-        })
-        .join('\n');
+      .sort((a, b) => {
+        return a.avg_finish_position - b.avg_finish_position;
+      })
+      .map((driver, index) => {
+        return 'Pick #' + (index + 1) + ':      ' + driver.full_name;
+      })
+      .join('\n');
 
       const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -48,7 +46,6 @@ const getDataSendEmail = () => {
     });
 };
 
-// schedule.scheduleJob('59 * * * * *', getDataAndEmail);
 schedule.scheduleJob('* * 12 * * 5', getDataAndEmail);
 
 app.listen(process.env.PORT || 3000, () => {
