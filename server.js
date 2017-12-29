@@ -46,7 +46,7 @@ const getDataSendEmail = () => {
     });
 };
 
-schedule.scheduleJob('* * 18 * * *', getDataAndEmail);
+schedule.scheduleJob('* * 23 * * *', getDataAndEmail);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Listening on port 3000');
