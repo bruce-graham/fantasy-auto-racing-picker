@@ -5,7 +5,7 @@ const schedule = require('node-schedule');
 const config = require('./config.js');
 const app = express();
 
-const getDataSendEmail = () => {
+function getDataSendEmail () {
   axios.get('http://api.sportradar.us/nascar-ot3/mc/2017/standings/drivers.json?api_key=' + config.sportradarKey)
     .then(response => {
       const topDrivers = response.data.drivers.filter(driver => {
@@ -46,7 +46,7 @@ const getDataSendEmail = () => {
     });
 };
 
-schedule.scheduleJob('* * 23 * * *', getDataAndEmail);
+schedule.scheduleJob('* * 23 * * *', getDataSendEmail);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Listening on port 3000');
